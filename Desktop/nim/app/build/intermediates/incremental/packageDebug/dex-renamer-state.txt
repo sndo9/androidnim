@@ -1,0 +1,7 @@
+#Sat Dec 03 16:52:28 CST 2016
+base.0=/Users/sndo9/Desktop/nim/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7b711d468f1cb67e4c3fdce6fe3e8911e706d71a
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/sndo9/Desktop/nim/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_83919405323f7f196d5c71289300a6f768e36bca/classes.dex
+base.1=/Users/sndo9/Desktop/nim/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_83919405323f7f196d5c71289300a6f768e36bca
+file.0=/Users/sndo9/Desktop/nim/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7b711d468f1cb67e4c3fdce6fe3e8911e706d71a/classes.dex
