@@ -13,7 +13,7 @@
     tools:context="com.sndo9.robert.nim.SinglePlayer">
 
     <Button
-        android:text="Confirm"
+        android:text="@string/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -23,7 +23,7 @@
         android:id="@+id/buttonConfirm" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -32,6 +32,14 @@
         android:enabled="false"
         android:id="@+id/buttonCancel" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/white"
+        android:id="@+id/helpText" />
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +69,8 @@
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
             android:rowCount="1"
-            android:columnCount="3"/>
+            android:columnCount="3"
+            android:onClick="onClick"/>
 
         <ImageView
             android:layout_height="wrap_content"
@@ -70,7 +79,8 @@
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
             android:rowCount="1"
-            android:columnCount="4"/>
+            android:columnCount="4"
+            android:onClick="onClick"/>
 
         <ImageView
             android:layout_height="wrap_content"
@@ -79,7 +89,8 @@
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
             android:rowCount="1"
-            android:columnCount="5"/>
+            android:columnCount="5"
+            android:onClick="onClick"/>
 
         <Space
             android:layout_columnWeight="0.10"

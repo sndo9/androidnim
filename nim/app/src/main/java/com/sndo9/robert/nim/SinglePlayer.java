@@ -3,6 +3,8 @@ package com.sndo9.robert.nim;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -124,6 +126,23 @@ public class SinglePlayer extends AppCompatActivity {
         sticks.add(twelve);
         */
 
+    }
+
+    boolean hasEntered = false;
+
+    public void onClick(View v)
+    {
+        //This is here for testing. You may remove this code or use it elsewhere
+        Animation an = null;
+        if(!hasEntered) {
+            an = AnimationUtils.loadAnimation(this, R.anim.stick_selection);
+        }
+        else {
+            an = AnimationUtils.loadAnimation(this, R.anim.stick_removal);
+            v.setVisibility(View.GONE);
+        }
+        v.startAnimation(an);
+        hasEntered = !hasEntered;
     }
 
     public void select(int num) {
