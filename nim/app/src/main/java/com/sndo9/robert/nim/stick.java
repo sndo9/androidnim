@@ -1,9 +1,14 @@
 package com.sndo9.robert.nim;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import static com.sndo9.robert.nim.GameLogic.registerTouch;
 
 /**
  * Created by rober on 12/3/2016.
@@ -12,15 +17,42 @@ import android.widget.ImageView;
 public class stick extends AppCompatActivity {
     protected boolean visibility;
     protected boolean isSelected;
-    //protected String id;
+    protected int row;
+    protected int position;
     protected ImageView image;
 
-    public stick(ImageView stickPic) {
+    protected View thisV;
+
+    protected Animation rotate;
+    protected Animation rotateBack;
+    protected Animation remove;
+
+    public stick(ImageView stickPic, int givenRow, int givenPosition, Context c) {
+
+        rotate = AnimationUtils.loadAnimation(c, R.anim.stick_selection);
+        rotateBack = AnimationUtils.loadAnimation(c, R.anim.stick_unselect);
+        remove = AnimationUtils.loadAnimation(c, R.anim.stick_removal);
+
         visibility = true;
         image = stickPic;
         image.setVisibility(View.VISIBLE);
-        image.setPivotX(image.getWidth() / 2);
-        image.setPivotY(image.getHeight() / 2);
+
+        row = givenRow;
+        position = givenPosition;
+
+        thisV = image;
+
+        image.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(!isSelected){
+                    select();
+                }
+                else {
+                    unSelect();
+                }
+            }
+        });
 
     }
 
@@ -51,14 +83,19 @@ public class stick extends AppCompatActivity {
     public void select() {
         if (!isSelected) {
             isSelected = true;
-            image.setRotation(45);
+            thisV.startAnimation(rotate);
+            registerTouch(row, position);
         }
     }
 
     public void unSelect() {
         if(isSelected) {
             isSelected = false;
-            image.setRotation(0);
+            thisV.startAnimation(rotateBack);
         }
+    }
+
+    public boolean isSelected(){
+        return isSelected;
     }
 }

@@ -24,22 +24,19 @@ public class GameLogic extends AppCompatActivity {
     protected static ArrayList<stick> arrayTwo = new ArrayList<>();
     protected static ArrayList<stick> arrayThree = new ArrayList<>();
 
+    protected static boolean isPlayerOne;
+    protected static boolean hasSelected;
+
     public static void startGame(Context c, View v){
 
-        //Upward limit on position number per row,
-        //row 1 = 6, 2 = 7, 3 = 8
-        int k = 6;
-        //Starting position for items in current row
-        //row 1 = 3, 2 = 2, 3 = 1;
-        int l = 3;
-
         String identifier;
-
-        int m;
         int res;
 
         ImageView newImageView;
         stick newStick;
+
+        isPlayerOne = true;
+        hasSelected = false;
 
         //Iterate through each row
 //        for(int row = 1; row < 4; row++){
@@ -67,7 +64,7 @@ public class GameLogic extends AppCompatActivity {
             identifier = "stick1" + i;
             res = c.getResources().getIdentifier(identifier, "id", c.getPackageName());
             newImageView = (ImageView)v.findViewById(res);
-            newStick = new stick(newImageView, 1, i);
+            newStick = new stick(newImageView, 1, i, c);
             arrayOne.add(newStick);
         }
         //Row two
@@ -75,7 +72,7 @@ public class GameLogic extends AppCompatActivity {
             identifier = "stick2" + i;
             res = c.getResources().getIdentifier(identifier, "id", c.getPackageName());
             newImageView = (ImageView)v.findViewById(res);
-            newStick = new stick(newImageView, 2, i);
+            newStick = new stick(newImageView, 2, i, c);
             arrayTwo.add(newStick);
         }
         //Row three
@@ -83,9 +80,10 @@ public class GameLogic extends AppCompatActivity {
             identifier = "stick3" + i;
             res = c.getResources().getIdentifier(identifier, "id", c.getPackageName());
             newImageView = (ImageView)v.findViewById(res);
-            newStick = new stick(newImageView, 3, i);
+            newStick = new stick(newImageView, 3, i, c);
             arrayThree.add(newStick);
         }
+
     }
 
     public static void registerTouch(int row, int position){
@@ -100,16 +98,30 @@ public class GameLogic extends AppCompatActivity {
                     arrayThree.get(i).unSelect();
                 }
             }
-
         }
         if(row == 2){
-            
+            for(int i = 0; i < arrayOne.size(); i++){
+                if(arrayOne.get(i).isSelected()){
+                    arrayOne.get(i).unSelect();
+                }
+            }
+            for(int i = 0; i < arrayThree.size(); i++){
+                if(arrayThree.get(i).isSelected()){
+                    arrayThree.get(i).unSelect();
+                }
+            }
         }
-    }
-
-    public void checkOtherRows(int givenRow){
-        if(givenRow == 1){
-
+        if(row == 3) {
+            for(int i = 0; i < arrayOne.size(); i++){
+                if(arrayOne.get(i).isSelected()){
+                    arrayOne.get(i).unSelect();
+                }
+            }
+            for(int i = 0; i < arrayTwo.size(); i++){
+                if(arrayTwo.get(i).isSelected()){
+                    arrayTwo.get(i).unSelect();
+                }
+            }
         }
     }
 }

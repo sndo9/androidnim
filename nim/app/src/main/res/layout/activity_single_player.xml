@@ -70,7 +70,7 @@
             android:layout_rowWeight="0.10"
             android:rowCount="1"
             android:columnCount="3"
-            android:onClick="onClick"/>
+            />
 
         <ImageView
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:layout_rowWeight="0.10"
             android:rowCount="1"
             android:columnCount="4"
-            android:onClick="onClick"/>
+            />
 
         <ImageView
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             android:layout_rowWeight="0.10"
             android:rowCount="1"
             android:columnCount="5"
-            android:onClick="onClick"/>
+            />
 
         <Space
             android:layout_columnWeight="0.10"

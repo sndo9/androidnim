@@ -10,6 +10,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import static com.sndo9.robert.nim.GameLogic.startGame;
+
 public class SinglePlayer extends AppCompatActivity {
 
     private ArrayList<stick> sticks = new ArrayList<stick>();
@@ -27,6 +29,9 @@ public class SinglePlayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
+
+        View v = findViewById(R.id.activity_single_player);
+        startGame(this, v);
 
         /*uno = (Button)findViewById(R.id.buttonUno);
         dos = (Button)findViewById(R.id.buttonDos);
@@ -130,87 +135,87 @@ public class SinglePlayer extends AppCompatActivity {
 
     boolean hasEntered = false;
 
-    public void onClick(View v)
-    {
-        //This is here for testing. You may remove this code or use it elsewhere
-        Animation an = null;
-        if(!hasEntered) {
-            an = AnimationUtils.loadAnimation(this, R.anim.stick_selection);
-        }
-        else {
-            an = AnimationUtils.loadAnimation(this, R.anim.stick_removal);
-            v.setVisibility(View.GONE);
-        }
-        v.startAnimation(an);
-        hasEntered = !hasEntered;
-    }
+//    public void onClick(View v)
+//    {
+//        //This is here for testing. You may remove this code or use it elsewhere
+//        Animation an = null;
+//        if(!hasEntered) {
+//            an = AnimationUtils.loadAnimation(this, R.anim.stick_selection);
+//        }
+//        else {
+//            an = AnimationUtils.loadAnimation(this, R.anim.stick_removal);
+//            v.setVisibility(View.GONE);
+//        }
+//        v.startAnimation(an);
+//        hasEntered = !hasEntered;
+//    }
 
-    public void select(int num) {
-        if(num == 1){
-            sticks.get(high).select();
-        }
-        if(num == 2){
-            sticks.get(high).select();
-            sticks.get(high - 1).select();
-        }
-        if(num == 3){
-            sticks.get(high).select();
-            sticks.get(high - 1).select();
-            sticks.get(high - 2).select();
-        }
-
-        uno.setVisibility(View.GONE);
-        dos.setVisibility(View.GONE);
-        tres.setVisibility(View.GONE);
-        confirmB.setVisibility(View.VISIBLE);
-        cancel.setVisibility(View.VISIBLE);
-    }
-
-    public void confirm(){
-        if(selection == 1){
-            sticks.get(high).makeInvisible();
-        }
-        if(selection == 2){
-            sticks.get(high).makeInvisible();
-            sticks.get(high - 1).makeInvisible();
-        }
-        if(selection == 3){
-            sticks.get(high).makeInvisible();
-            sticks.get(high - 1).makeInvisible();
-            sticks.get(high - 2).makeInvisible();
-        }
-        high = high - selection;
-        selection = 0;
-
-        uno.setVisibility(View.VISIBLE);
-        dos.setVisibility(View.VISIBLE);
-        tres.setVisibility(View.VISIBLE);
-        confirmB.setVisibility(View.GONE);
-        cancel.setVisibility(View.GONE);
-    }
-
-    public void cancel(){
-        if(selection == 1){
-            sticks.get(high).unSelect();
-        }
-        if(selection == 2){
-            sticks.get(high).unSelect();
-            sticks.get(high - 1).unSelect();
-        }
-        if(selection == 3){
-            sticks.get(high).unSelect();
-            sticks.get(high - 1).unSelect();
-            sticks.get(high - 2).unSelect();
-        }
-
-        uno.setVisibility(View.VISIBLE);
-        dos.setVisibility(View.VISIBLE);
-        tres.setVisibility(View.VISIBLE);
-        confirmB.setVisibility(View.GONE);
-        cancel.setVisibility(View.GONE);
-    }
-
-    public void win(){
-
-    }
+//    public void select(int num) {
+//        if(num == 1){
+//            sticks.get(high).select();
+//        }
+//        if(num == 2){
+//            sticks.get(high).select();
+//            sticks.get(high - 1).select();
+//        }
+//        if(num == 3){
+//            sticks.get(high).select();
+//            sticks.get(high - 1).select();
+//            sticks.get(high - 2).select();
+//        }
+//
+//        uno.setVisibility(View.GONE);
+//        dos.setVisibility(View.GONE);
+//        tres.setVisibility(View.GONE);
+//        confirmB.setVisibility(View.VISIBLE);
+//        cancel.setVisibility(View.VISIBLE);
+//    }
+//
+//    public void confirm(){
+//        if(selection == 1){
+//            sticks.get(high).makeInvisible();
+//        }
+//        if(selection == 2){
+//            sticks.get(high).makeInvisible();
+//            sticks.get(high - 1).makeInvisible();
+//        }
+//        if(selection == 3){
+//            sticks.get(high).makeInvisible();
+//            sticks.get(high - 1).makeInvisible();
+//            sticks.get(high - 2).makeInvisible();
+//        }
+//        high = high - selection;
+//        selection = 0;
+//
+//        uno.setVisibility(View.VISIBLE);
+//        dos.setVisibility(View.VISIBLE);
+//        tres.setVisibility(View.VISIBLE);
+//        confirmB.setVisibility(View.GONE);
+//        cancel.setVisibility(View.GONE);
+//    }
+//
+//    public void cancel(){
+//        if(selection == 1){
+//            sticks.get(high).unSelect();
+//        }
+//        if(selection == 2){
+//            sticks.get(high).unSelect();
+//            sticks.get(high - 1).unSelect();
+//        }
+//        if(selection == 3){
+//            sticks.get(high).unSelect();
+//            sticks.get(high - 1).unSelect();
+//            sticks.get(high - 2).unSelect();
+//        }
+//
+//        uno.setVisibility(View.VISIBLE);
+//        dos.setVisibility(View.VISIBLE);
+//        tres.setVisibility(View.VISIBLE);
+//        confirmB.setVisibility(View.GONE);
+//        cancel.setVisibility(View.GONE);
+//    }
+//
+//    public void win(){
+//
+//    }
 }
