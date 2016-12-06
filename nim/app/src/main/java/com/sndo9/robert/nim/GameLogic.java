@@ -192,6 +192,9 @@ public class GameLogic extends AppCompatActivity {
     }
 
     public static void checkWin(){
-        if(ptsLeft == 0) context.startActivity(winScreen);
+        if(ptsLeft == 0) {
+            winScreen.putExtra("winner", isPlayerOne);
+            context.startActivity(winScreen);
+        }
     }
 }
