@@ -28,6 +28,7 @@ public class stick extends AppCompatActivity {
     protected Animation rotate;
     protected Animation rotateBack;
     protected Animation remove;
+    public boolean isRemoved = false;
 
     public stick(ImageView stickPic, int givenRow, int givenPosition, Context c) {
 
@@ -105,6 +106,7 @@ public class stick extends AppCompatActivity {
     public void remove(){
         thisV.startAnimation(remove);
         image.setVisibility(View.GONE);
+        isRemoved = true;
         isSelected = false;
     }
 
@@ -115,4 +117,5 @@ public class stick extends AppCompatActivity {
     public void enable(){
         image.setEnabled(true);
     }
+
 }

@@ -2,6 +2,7 @@ package com.sndo9.robert.nim;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ public class GameLogic extends AppCompatActivity {
     protected static ArrayList<stick> arrayTwo = new ArrayList<>();
     protected static ArrayList<stick> arrayThree = new ArrayList<>();
     protected static ArrayList<stick> last;
+    protected static AI computer;
 
     protected static Button confirm;
     protected static Button cancel;
@@ -45,6 +47,7 @@ public class GameLogic extends AppCompatActivity {
 
         view = v;
         context = c;
+        computer = new AI(false);
 
         String identifier;
         int res;
@@ -94,6 +97,20 @@ public class GameLogic extends AppCompatActivity {
                 //Next turn
                 endTurn();
                 isPlayerOne = !isPlayerOne;
+
+                if(computer.isPlayerOne == isPlayerOne) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            computer.doTurn(arrayOne, arrayTwo, arrayThree);
+                            endTurn();
+                            isPlayerOne = !isPlayerOne;
+                        }
+                    }, 1000);
+
+                }
 
             }
         });
