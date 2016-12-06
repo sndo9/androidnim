@@ -31,6 +31,11 @@
         android:layout_alignParentEnd="true"
         android:enabled="false"
         android:id="@+id/buttonCancel" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/buttonInformation"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,6 +45,7 @@
         android:layout_alignParentEnd="true"
         android:textColor="@color/white"
         android:id="@+id/helpText" />
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -224,5 +230,12 @@
             android:rowCount="3"
             android:columnCount="7"/>
     </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container">
+
+    </LinearLayout>
 
 </RelativeLayout>

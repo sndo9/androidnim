@@ -197,4 +197,14 @@ public class GameLogic extends AppCompatActivity {
             context.startActivity(winScreen);
         }
     }
+
+    public static void pause(){
+        pauseRow(arrayOne);
+        pauseRow(arrayTwo);
+        pauseRow(arrayThree);
+    }
+
+    public static void pauseRow(ArrayList<stick> list){
+        for(int i = 0; i < list.size(); i++) list.get(i).disable();
+    }
 }

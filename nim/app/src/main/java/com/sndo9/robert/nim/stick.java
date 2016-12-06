@@ -107,4 +107,12 @@ public class stick extends AppCompatActivity {
         image.setVisibility(View.GONE);
         isSelected = false;
     }
+
+    public void disable(){
+        image.setEnabled(false);
+    }
+
+    public void enable(){
+        image.setEnabled(true);
+    }
 }

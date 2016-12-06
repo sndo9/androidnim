@@ -1,7 +1,10 @@
 package com.sndo9.robert.nim;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,25 +13,43 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import static com.sndo9.robert.nim.GameLogic.pause;
 import static com.sndo9.robert.nim.GameLogic.startGame;
 
 public class SinglePlayer extends AppCompatActivity {
 
-    private ArrayList<stick> sticks = new ArrayList<stick>();
-    private int high = 11;
-    private int low = 0;
-    private int selection;
+//    private ArrayList<stick> sticks = new ArrayList<stick>();
+//    private int high = 11;
+//    private int low = 0;
+//    private int selection;
+//
+//    private Button uno;
+//    private Button dos;
+//    private Button tres;
+//    private Button confirmB;
+//    private Button cancel;
 
-    private Button uno;
-    private Button dos;
-    private Button tres;
-    private Button confirmB;
-    private Button cancel;
+    private Button information;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
+
+        information =(Button)findViewById(R.id.buttonInformation);
+
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pause();
+                Log.d("i Button", "Worked");
+                FragmentManager f = getSupportFragmentManager();
+                FragmentTransaction fT = f.beginTransaction();
+                Instruction_Page iPage = new Instruction_Page();
+                fT.add(R.id.container, iPage, "hi");
+                fT.commit();
+            }
+        });
 
         View v = findViewById(R.id.activity_single_player);
         startGame(this, v);
@@ -133,7 +154,7 @@ public class SinglePlayer extends AppCompatActivity {
 
     }
 
-    boolean hasEntered = false;
+    //boolean hasEntered = false;
 
 //    public void onClick(View v)
 //    {
