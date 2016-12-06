@@ -27,10 +27,13 @@ public class GameLogic extends AppCompatActivity {
     protected static boolean isPlayerOne;
     protected static boolean hasSelected;
 
+    protected static int count;
+
     public static void startGame(Context c, View v){
 
         String identifier;
         int res;
+        count = 0;
 
         ImageView newImageView;
         stick newStick;
@@ -123,5 +126,9 @@ public class GameLogic extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public static void unTouch(){
+        if(count > 0) count = count - 1;
     }
 }

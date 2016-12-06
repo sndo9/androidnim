@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import static com.sndo9.robert.nim.GameLogic.registerTouch;
+import static com.sndo9.robert.nim.GameLogic.unTouch;
 
 /**
  * Created by rober on 12/3/2016.
@@ -92,6 +93,7 @@ public class stick extends AppCompatActivity {
         if(isSelected) {
             isSelected = false;
             thisV.startAnimation(rotateBack);
+            unTouch();
         }
     }
 
