@@ -31,6 +31,10 @@ public class SinglePlayer extends AppCompatActivity {
 
     private Button information;
 
+    protected FragmentManager f;
+    protected FragmentTransaction fT;
+    protected Instruction_Page iPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +46,15 @@ public class SinglePlayer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 pause();
-                Log.d("i Button", "Worked");
-                FragmentManager f = getSupportFragmentManager();
-                FragmentTransaction fT = f.beginTransaction();
-                Instruction_Page iPage = new Instruction_Page();
+                f = getSupportFragmentManager();
+                fT = f.beginTransaction();
+                iPage = new Instruction_Page();
                 fT.add(R.id.container, iPage, "hi");
                 fT.commit();
             }
         });
+
+
 
         View v = findViewById(R.id.activity_single_player);
         startGame(this, v);

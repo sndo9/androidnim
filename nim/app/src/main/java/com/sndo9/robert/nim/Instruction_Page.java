@@ -31,6 +31,8 @@ public class Instruction_Page extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Button close;
+
     private OnFragmentInteractionListener mListener;
 
     public Instruction_Page() {
@@ -62,7 +64,8 @@ public class Instruction_Page extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
 
-            Button close = (Button)getView().findViewById(R.id.buttonClose);
+
+
 
         }
     }
@@ -71,6 +74,7 @@ public class Instruction_Page extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_instruction__page, container, false);
     }
 
@@ -84,12 +88,12 @@ public class Instruction_Page extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -112,4 +116,9 @@ public class Instruction_Page extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    public void kill(){
+
+    }
 }
+
