@@ -31,6 +31,8 @@ public class GameLogic extends AppCompatActivity {
 
     protected static View view;
 
+    protected static Context context;
+
     protected static Intent winScreen;
 
     protected static boolean isPlayerOne;
@@ -42,6 +44,8 @@ public class GameLogic extends AppCompatActivity {
     public static void startGame(Context c, View v){
 
         view = v;
+        context = c;
+
         String identifier;
         int res;
         count = 0;
@@ -188,6 +192,6 @@ public class GameLogic extends AppCompatActivity {
     }
 
     public static void checkWin(){
-        if(ptsLeft == 0) view.startActivity(winScreen);
+        if(ptsLeft == 0) context.startActivity(winScreen);
     }
 }
