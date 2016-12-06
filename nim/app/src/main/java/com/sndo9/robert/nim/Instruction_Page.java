@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import static com.sndo9.robert.nim.GameLogic.view;
 
 
 /**
@@ -58,6 +61,8 @@ public class Instruction_Page extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            Button close = (Button)getView().findViewById(R.id.buttonClose);
 
         }
     }
