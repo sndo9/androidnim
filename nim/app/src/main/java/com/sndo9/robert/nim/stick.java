@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import static com.sndo9.robert.nim.GameLogic.count;
 import static com.sndo9.robert.nim.GameLogic.registerTouch;
 import static com.sndo9.robert.nim.GameLogic.unTouch;
 
@@ -93,11 +94,17 @@ public class stick extends AppCompatActivity {
         if(isSelected) {
             isSelected = false;
             thisV.startAnimation(rotateBack);
-            unTouch();
+            if(count != 0) count = count - 1;
         }
     }
 
     public boolean isSelected(){
         return isSelected;
+    }
+
+    public void remove(){
+        thisV.startAnimation(remove);
+        image.setVisibility(View.GONE);
+        isSelected = false;
     }
 }
