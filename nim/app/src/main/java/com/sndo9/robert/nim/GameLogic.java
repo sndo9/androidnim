@@ -4,17 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-
-import static android.R.attr.x;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static java.lang.Compiler.disable;
-import static java.lang.Compiler.enable;
 
 /**
  * Created by sndo9 on 12/5/16.
@@ -119,7 +113,7 @@ public class GameLogic extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Reset current turn
-                reset();
+                resetSelect();
             }
         });
     }
@@ -184,7 +178,7 @@ public class GameLogic extends AppCompatActivity {
         cancel.setEnabled(true);
     }
 
-    public static void reset(){
+    public static void resetSelect(){
         resetRow(arrayOne);
         resetRow(arrayTwo);
         resetRow(arrayThree);
@@ -223,5 +217,15 @@ public class GameLogic extends AppCompatActivity {
 
     public static void pauseRow(ArrayList<stick> list){
         for(int i = 0; i < list.size(); i++) list.get(i).disable();
+    }
+
+    public static void unPause(){
+        unPauseRow(arrayOne);
+        unPauseRow(arrayTwo);
+        unPauseRow(arrayThree);
+    }
+
+    public static void unPauseRow(ArrayList<stick> list){
+        for(int i = 0; i < list.size(); i++) list.get(i).enable();
     }
 }

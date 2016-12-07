@@ -4,24 +4,20 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import static com.sndo9.robert.nim.GameLogic.view;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Instruction_Page.OnFragmentInteractionListener} interface
+ * {@link WinScreenFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Instruction_Page#newInstance} factory method to
+ * Use the {@link WinScreenFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Instruction_Page extends Fragment {
+public class WinScreenFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,11 +27,9 @@ public class Instruction_Page extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View root;
-
     private OnFragmentInteractionListener mListener;
 
-    public Instruction_Page() {
+    public WinScreenFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +39,11 @@ public class Instruction_Page extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Instruction_Page.
+     * @return A new instance of fragment WinScreenFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Instruction_Page newInstance(String param1, String param2) {
-        Instruction_Page fragment = new Instruction_Page();
+    public static WinScreenFragment newInstance(String param1, String param2) {
+        WinScreenFragment fragment = new WinScreenFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,8 +57,6 @@ public class Instruction_Page extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
-
         }
     }
 
@@ -72,13 +64,7 @@ public class Instruction_Page extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        root = inflater.inflate(R.layout.fragment_instruction__page, container, false);
-
-        SinglePlayer.close = (Button) root.findViewById(R.id.buttonClose);
-        SinglePlayer.setClose();
-
-        return root;
+        return inflater.inflate(R.layout.fragment_win_screen, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -120,4 +106,3 @@ public class Instruction_Page extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
-

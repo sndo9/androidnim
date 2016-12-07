@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/black"
+    android:background="@drawable/backgroundblur"
     tools:context="com.sndo9.robert.nim.Instruction_Page">
 
     <!-- TODO: Update blank fragment layout -->
@@ -19,15 +19,6 @@
             android:id="@+id/buttonSave"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="close"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/buttonClose"
-            />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,26 +26,6 @@
             android:textColor="@color/white"
             android:text="Welcome to Nim! \n Nim is a game you can play alone or with a friend.\n Each person durring their turn must select OBJECTs to be removed. You can select as many OBJECTs as you want as long as they all come from the same row. The winner is the person who takes the last OBJECT. \n Have fun"
             />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/button4"
-            android:layout_centerHorizontal="true">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Random"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="One mistake"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Perfect"/>
-        </RadioGroup>
-
     </RelativeLayout>
 
 </FrameLayout>
