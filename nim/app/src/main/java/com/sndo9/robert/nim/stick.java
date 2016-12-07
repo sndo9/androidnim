@@ -30,11 +30,14 @@ public class stick extends AppCompatActivity {
     protected Animation remove;
     public boolean isRemoved = false;
 
+
+    public stick(String data, Context c){
+
+    }
+
     public stick(ImageView stickPic, int givenRow, int givenPosition, Context c) {
 
-        rotate = AnimationUtils.loadAnimation(c, R.anim.stick_selection);
-        rotateBack = AnimationUtils.loadAnimation(c, R.anim.stick_unselect);
-        remove = AnimationUtils.loadAnimation(c, R.anim.stick_removal);
+        setRotations(c);
 
         visibility = true;
         image = stickPic;
@@ -118,4 +121,14 @@ public class stick extends AppCompatActivity {
         image.setEnabled(true);
     }
 
+    private void setRotations(Context c){
+        rotate = AnimationUtils.loadAnimation(c, R.anim.stick_selection);
+        rotateBack = AnimationUtils.loadAnimation(c, R.anim.stick_unselect);
+        remove = AnimationUtils.loadAnimation(c, R.anim.stick_removal);
+    }
+
+    public String toString(){
+
+        return null;
+    }
 }
