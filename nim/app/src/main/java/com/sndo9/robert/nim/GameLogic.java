@@ -2,13 +2,17 @@ package com.sndo9.robert.nim;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+
+import static com.sndo9.robert.nim.SinglePlayer.endGame;
 
 /**
  * Created by sndo9 on 12/5/16.
@@ -20,7 +24,10 @@ public class GameLogic extends AppCompatActivity {
     protected static ArrayList<stick> arrayTwo = new ArrayList<>();
     protected static ArrayList<stick> arrayThree = new ArrayList<>();
     protected static ArrayList<stick> last;
+
     protected static AI computer;
+
+    protected static WinScreenFragment wPage = new WinScreenFragment();
 
     protected static Button confirm;
     protected static Button cancel;
@@ -36,6 +43,8 @@ public class GameLogic extends AppCompatActivity {
 
     protected static int count;
     protected static int ptsLeft;
+    protected static int score;
+    protected static int turns;
 
     public static void startGame(Context c, View v){
 
@@ -202,7 +211,7 @@ public class GameLogic extends AppCompatActivity {
 
     public static void checkWin(){
         if(ptsLeft == 0) {
-
+            endGame(isPlayerOne, context, turns);
         }
     }
 

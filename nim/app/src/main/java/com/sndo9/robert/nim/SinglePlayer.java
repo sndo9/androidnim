@@ -1,5 +1,8 @@
 package com.sndo9.robert.nim;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,6 +35,8 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
     protected int score;
 
+    protected static int runningScore;
+
     public static Button close;
 
     protected boolean pageOpen = false;
@@ -42,10 +47,18 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
+        Intent call = getIntent();
+
+        Bundle extras = call.getExtras();
+
+        if(extras != null){
+            if(extras.containsKey("score")) runningScore = extras.getInt("score");
+        }
+        else runningScore = 0;
+
         //if not saved
         highscore = new ArrayList<>();
 
-        score = 0;
         f = getSupportFragmentManager();
 
         information =(Button)findViewById(R.id.buttonInformation);
@@ -84,6 +97,16 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
         //Record high score
 
+    }
+
+    public static void endGame(Boolean playerOne, Context c, int turns){
+        Intent goToWin = new Intent(c, WinScreen.class);
+        Bundle extra = new Bundle();
+        extra.putInt("score", runningScore);
+        extra.putBoolean("winner", playerOne);
+        extra.putInt("numTurns", turns);
+        goToWin.putExtras(extra);
+        c.startActivity(goToWin);
     }
 
     @Override
