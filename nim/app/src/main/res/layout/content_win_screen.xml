@@ -18,14 +18,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/winnerText"
-            android:text="Player"
-            android:textSize="50sp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:text="Play Again?"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/buttonPlayAgain"
+            android:visibility="visible"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Enter your name"
+            android:ems="10"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="137dp"
+            android:id="@+id/enterName"
+            android:visibility="visible"
+            android:textAlignment="center" />
+
+        <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="77dp"
+            android:id="@+id/buttonSubmitName"
+            android:visibility="visible"/>
 
         <TextView
             android:text="The Winner is..."
@@ -33,16 +57,26 @@
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:id="@+id/TextView"
-            android:layout_above="@+id/winnerText"
             android:layout_centerHorizontal="true" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Again?"
-            android:layout_marginBottom="24dp"
-            android:layout_alignParentBottom="true"
+            android:id="@+id/winnerText"
+            android:text="Player"
+            android:textSize="50sp"
+            android:layout_below="@+id/TextView"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="120"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewScore"
+            android:textSize="120sp"
+            android:layout_above="@+id/enterName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp" />
     </RelativeLayout>
 
 </RelativeLayout>
