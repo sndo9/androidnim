@@ -75,8 +75,8 @@ public class Instruction_Page extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_instruction__page, container, false);
 
-        SinglePlayer.close = (Button) root.findViewById(R.id.buttonClose);
-        SinglePlayer.setClose();
+//        SinglePlayer.close = (Button) root.findViewById(R.id.buttonClose);
+//        SinglePlayer.setClose();
 
         return root;
     }

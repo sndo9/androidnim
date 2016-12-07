@@ -28,6 +28,10 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     protected static FragmentManager f;
     protected static Instruction_Page iPage = new Instruction_Page();
 
+    protected static ArrayList<Tuple> highscore;
+
+    protected int score;
+
     public static Button close;
 
     protected boolean pageOpen = false;
@@ -38,6 +42,10 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
 
+        //if not saved
+        highscore = new ArrayList<>();
+
+        score = 0;
         f = getSupportFragmentManager();
 
         information =(Button)findViewById(R.id.buttonInformation);
@@ -70,7 +78,11 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
 
         View v = findViewById(R.id.activity_single_player);
+
+        //Loop start game to track pts
         startGame(this, v);
+
+        //Record high score
 
     }
 

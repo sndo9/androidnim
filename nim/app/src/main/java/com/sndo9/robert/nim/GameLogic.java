@@ -57,8 +57,6 @@ public class GameLogic extends AppCompatActivity {
         confirm = (Button)v.findViewById(R.id.buttonConfirm);
         cancel = (Button)v.findViewById(R.id.buttonCancel);
 
-        winScreen = new Intent(c, WinScreen.class);
-
         //Row one
         for(int i = 3; i < 6; i++){
             identifier = "stick1" + i;
