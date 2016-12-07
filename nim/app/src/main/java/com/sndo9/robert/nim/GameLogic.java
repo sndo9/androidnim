@@ -179,15 +179,15 @@ public class GameLogic extends AppCompatActivity {
     }
 
     public static void resetSelect(){
-        resetRow(arrayOne);
-        resetRow(arrayTwo);
-        resetRow(arrayThree);
+        resetSelectRow(arrayOne);
+        resetSelectRow(arrayTwo);
+        resetSelectRow(arrayThree);
 
         last = null;
         disableButtons();
     }
 
-    public static void resetRow(ArrayList<stick> list){
+    public static void resetSelectRow(ArrayList<stick> list){
         for(int i = 0; i < list.size(); i++) list.get(i).unSelect();
     }
 
@@ -204,8 +204,7 @@ public class GameLogic extends AppCompatActivity {
 
     public static void checkWin(){
         if(ptsLeft == 0) {
-            winScreen.putExtra("winner", isPlayerOne);
-            context.startActivity(winScreen);
+
         }
     }
 
