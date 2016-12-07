@@ -34,11 +34,15 @@ public class AI {
         }
 
         selectSticksToRemove(rows[x], remainingSticks, totalSticks);
+        Log.w("AI", "Done Selecting sticks");
     }
 
 
     private void selectSticksToRemove(ArrayList<stick> arrayOne, int sticksToRemove, int totalNumSticks) {
         int numSticks = getRand(sticksToRemove);
+        if(numSticks == 0)
+            numSticks = 1;
+
         Log.w("AI", "Removing " + numSticks + "/" + totalNumSticks + " sticks\n-----------------------");
         for(int x = 0; x < numSticks; x++) {
             int stickToRemove = -1;
