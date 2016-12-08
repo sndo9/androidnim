@@ -8,10 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import static com.sndo9.robert.nim.GameLogic.count;
-import static com.sndo9.robert.nim.GameLogic.registerTouch;
-import static com.sndo9.robert.nim.GameLogic.unTouch;
-
 /**
  * Created by rober on 12/3/2016.
  */
@@ -30,11 +26,6 @@ public class stick extends AppCompatActivity {
     protected Animation remove;
     public boolean isRemoved = false;
 
-
-    public stick(String data, Context c){
-
-    }
-
     public stick(ImageView stickPic, int givenRow, int givenPosition, Context c) {
 
         setRotations(c);
@@ -48,17 +39,7 @@ public class stick extends AppCompatActivity {
 
         thisV = image;
 
-        image.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(!isSelected){
-                    select();
-                }
-                else {
-                    unSelect();
-                }
-            }
-        });
+
 
     }
 
@@ -86,20 +67,30 @@ public class stick extends AppCompatActivity {
         return visibility;
     }
 
-    public void select() {
+    /**
+     * Unselects the stick
+     * @return true if the stick was unselected, false otherwise
+     */
+    public boolean select() {
         if (!isSelected) {
             isSelected = true;
             thisV.startAnimation(rotate);
-            registerTouch(row, position);
+            return true;
         }
+        return false;
     }
 
-    public void unSelect() {
+    /**
+     * Unselects the stick
+     * @return true if the stick was unselected, false otherwise
+     */
+    public boolean unSelect() {
         if(isSelected) {
             isSelected = false;
             thisV.startAnimation(rotateBack);
-            if(count != 0) count = count - 1;
+            return true;
         }
+        return false;
     }
 
     public boolean isSelected(){
@@ -130,5 +121,13 @@ public class stick extends AppCompatActivity {
     public String toString(){
 
         return null;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public int getRow() {
+        return row;
     }
 }

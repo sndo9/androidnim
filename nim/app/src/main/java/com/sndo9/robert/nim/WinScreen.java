@@ -18,7 +18,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import static com.sndo9.robert.nim.GameLogic.score;
 import static com.sndo9.robert.nim.SinglePlayer.f;
 import static com.sndo9.robert.nim.SinglePlayer.runningScore;
 
