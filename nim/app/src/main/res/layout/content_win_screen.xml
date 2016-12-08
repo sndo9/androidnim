@@ -12,21 +12,11 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sndo9.robert.nim.WinScreen"
     tools:showIn="@layout/activity_win_screen"
-    android:background="@drawable/winscreen">
+    android:background="@drawable/winscreenfixed">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Play Again?"
-            android:layout_marginBottom="24dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/buttonPlayAgain"
-            android:visibility="visible"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -38,7 +28,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="137dp"
             android:id="@+id/enterName"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:textAlignment="center" />
 
         <Button
@@ -49,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="77dp"
             android:id="@+id/buttonSubmitName"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
         <TextView
             android:text="The Winner is..."
@@ -69,14 +59,35 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="120"
+            android:text="60"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewScore"
             android:textSize="120sp"
-            android:layout_above="@+id/enterName"
+            android:layout_below="@+id/winnerText"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="24dp" />
+
+        <Button
+            android:text="Main Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonMainMenu"
+            android:layout_alignBaseline="@+id/buttonPlayAgain"
+            android:layout_alignBottom="@+id/buttonPlayAgain"
+            android:layout_alignRight="@+id/TextView"
+            android:layout_alignEnd="@+id/TextView" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Again"
+            android:layout_marginBottom="24dp"
+            android:id="@+id/buttonPlayAgain"
+            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/TextView"
+            android:layout_alignStart="@+id/TextView" />
     </RelativeLayout>
 
 </RelativeLayout>
