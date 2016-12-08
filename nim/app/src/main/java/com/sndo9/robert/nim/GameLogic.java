@@ -211,7 +211,7 @@ public class GameLogic extends AppCompatActivity {
 
     public static void checkWin(){
         if(ptsLeft == 0) {
-            endGame(isPlayerOne, context, turns);
+            endGame(isPlayerOne, context, turns, true);
         }
     }
 
