@@ -18,7 +18,6 @@ public class GameLogic extends AppCompatActivity {
     protected ArrayList<stick> arrayOne = new ArrayList<>();
     protected ArrayList<stick> arrayTwo = new ArrayList<>();
     protected ArrayList<stick> arrayThree = new ArrayList<>();
-    protected ArrayList<stick> last;
 
     protected AI computer;
 
@@ -141,19 +140,6 @@ public class GameLogic extends AppCompatActivity {
                     }, 1000);*/
 
                     int rowSelected = computer.doTurn(arrayOne, arrayTwo, arrayThree);
-                    switch(rowSelected) {
-                        case 1:
-                            last = arrayOne;
-                            break;
-                        case 2:
-                            last = arrayTwo;
-                            break;
-                        case 3:
-                            last = arrayThree;
-                            break;
-
-                    }
-
                     endTurn(arrayOne, arrayTwo, arrayThree);
                     isPlayerOne = !isPlayerOne;
                 }
@@ -175,7 +161,6 @@ public class GameLogic extends AppCompatActivity {
         enableButtons();
 
         if(row == 1){
-            last = arrayOne;
             for(int i = 0; i < arrayTwo.size(); i++){
                 if(arrayTwo.get(i).isSelected()) {
                     unSelectStick(arrayTwo.get(i));
@@ -188,7 +173,6 @@ public class GameLogic extends AppCompatActivity {
             }
         }
         if(row == 2){
-            last = arrayTwo;
             for(int i = 0; i < arrayOne.size(); i++){
                 if(arrayOne.get(i).isSelected()){
                     unSelectStick(arrayOne.get(i));
@@ -201,7 +185,6 @@ public class GameLogic extends AppCompatActivity {
             }
         }
         if(row == 3) {
-            last = arrayThree;
             for(int i = 0; i < arrayOne.size(); i++){
                 if(arrayOne.get(i).isSelected()){
                     unSelectStick(arrayOne.get(i));
@@ -247,7 +230,6 @@ public class GameLogic extends AppCompatActivity {
         resetSelectRow(arrayTwo);
         resetSelectRow(arrayThree);
 
-        last = null;
         disableButtons();
     }
 
