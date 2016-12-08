@@ -10,21 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/instructionPage">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/buttonSave"
-            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="@color/white"
-            android:text="Welcome to Nim! \n Nim is a game you can play alone or with a friend.\n Each person durring their turn must select OBJECTs to be removed. You can select as many OBJECTs as you want as long as they all come from the same row. The winner is the person who takes the last OBJECT. \n Have fun"
+            android:textSize="20sp"
+            android:text="Welcome to Nim! \n\n Nim is a game you can play alone or with a friend. Each person durring their turn must select OBJECTs to be removed. You can select as many OBJECTs as you want as long as they all come from the same row. The winner is the person who takes the last OBJECT.\n\n Points are awarded for how quickly you are able to beat the AI. Points are cumulative until you loose against the AI \n2 turns = 12 pts\n3 turns = 10 pts\n...\n 7 turns = 2 pts\n8 turns = 0 pts\n Have fun"
             />
     </RelativeLayout>
 

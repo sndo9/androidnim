@@ -10,9 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
+import static android.R.id.edit;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by sndo9 on 12/5/16.
@@ -30,6 +34,7 @@ public class GameLogic extends AppCompatActivity {
     protected Button confirm;
     protected Button cancel;
     protected TextView infoTextField;
+    protected TextView numOfTurns;
 
     protected View view;
 
@@ -63,6 +68,7 @@ public class GameLogic extends AppCompatActivity {
         cancel = (Button)view.findViewById(R.id.buttonCancel);
         infoTextField = (TextView) view.findViewById(R.id.helpText);
         infoTextField.setText("Player 1's turn");
+        numOfTurns = (TextView)view.findViewById(R.id.textNumOfTurns);
 
         save = context.getSharedPreferences("save", 0);
         editSave = save.edit();
@@ -276,9 +282,13 @@ public class GameLogic extends AppCompatActivity {
                 }
             }
         }
+
         disableButtons();
         Log.w("saveState", "Near");
-        if(useAI && !isPlayerOne) saveState();
+        if(useAI && !isPlayerOne) {
+            saveState();
+            numOfTurns.setText("Number of Turns: " + turns);
+        }
         checkWin();
     }
 
@@ -347,12 +357,15 @@ public class GameLogic extends AppCompatActivity {
         }
         Log.w("-----------saving", rowString);
         editSave.putString("rowThreeSave", rowString);
+
+        editSave.putString("numTurns", "" + turns);
         editSave.commit();
 
         if(isOver){
             editSave.remove("rowOneSave");
             editSave.remove("rowTwoSave");
             editSave.remove("rowThreeSave");
+            editSave.remove("numTurns");
             editSave.commit();
         }
     }
@@ -372,5 +385,7 @@ public class GameLogic extends AppCompatActivity {
             arrayThree.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
         }
         Log.w("-----------resuming", rowString);
+
+        turns = Integer.parseInt(save.getString("numTurns", "1"));
     }
 }

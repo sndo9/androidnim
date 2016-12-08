@@ -41,6 +41,12 @@ public class WinScreen extends AppCompatActivity {
         SharedPreferences save = getSharedPreferences("save", 0);
         SharedPreferences.Editor editSave = save.edit();
 
+        editSave.remove("rowOneSave");
+        editSave.remove("rowTwoSave");
+        editSave.remove("rowThreeSave");
+        editSave.remove("numTurns");
+        editSave.commit();
+
 
         Intent call = getIntent();
 
@@ -75,7 +81,7 @@ public class WinScreen extends AppCompatActivity {
                 //AI won
                 if(!isOne && isAI) {
                     winnerText.setText("Phill the AI");
-                    scoreText.setText("" + runningScore);
+                    scoreText.setText("" + runningScore + " pts");
                     playAgain.setVisibility(View.INVISIBLE);
                     getHScore();
                     Boolean isHScore = checkHScore(runningScore);
@@ -86,17 +92,17 @@ public class WinScreen extends AppCompatActivity {
                 else if(isOne && isAI) {
                     runningScore = runningScore + potentialPoints;
                     winnerText.setText("The Player");
-                    scoreText.setText("" + runningScore);
+                    scoreText.setText("" + runningScore + " pts");
                 }
                 //Player one won against player two
                 else if(isOne && !isAI) {
                     winnerText.setText("Player One");
-                    scoreText.setText("" + turns);
+                    scoreText.setText("In " + turns + " turns");
                 }
                 //Player two won
                 else if(!isAI && !isOne) {
                     winnerText.setText("Player Two");
-                    scoreText.setText("" + turns);
+                    scoreText.setText("In " + turns + " turns");
                 }
 
                 final int passingScore = runningScore;

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -28,11 +29,11 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     protected static FragmentManager f;
     protected static Instruction_Page iPage = new Instruction_Page();
 
-    protected int score;
+    //protected int score;
 
     protected int runningScore;
 
-    public static Button close;
+    //public static Button close;
 
     protected boolean pageOpen = false;
     protected GameLogic logic;
