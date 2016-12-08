@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.StringTokenizer;
 
+import static android.R.id.edit;
+
 public class WinScreen extends AppCompatActivity {
 
     protected int[] hScores = new int[10];
@@ -31,10 +33,14 @@ public class WinScreen extends AppCompatActivity {
         int runningScore;
         Boolean isOne;
         int turns;
-        Boolean isAI;
+        final Boolean isAI;
 
         Button playAgain = (Button)findViewById(R.id.buttonPlayAgain);
         final Button mainMenu = (Button)findViewById(R.id.buttonMainMenu);
+
+        SharedPreferences save = getSharedPreferences("save", 0);
+        SharedPreferences.Editor editSave = save.edit();
+
 
         Intent call = getIntent();
 
@@ -100,6 +106,7 @@ public class WinScreen extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent playAgainIntent = new Intent(view.getContext(), SinglePlayer.class);
                         playAgainIntent.putExtra("score", passingScore);
+                        playAgainIntent.putExtra("PLAY_WITH_THE_AI_ON", isAI);
                         startActivity(playAgainIntent);
                     }
                 });
@@ -111,9 +118,8 @@ public class WinScreen extends AppCompatActivity {
                         startActivity(mainMenuIntent);
                     }
                 });
-
-
-
+                editSave.putString("points", "" + runningScore);
+                editSave.commit();
             }
         }
     }

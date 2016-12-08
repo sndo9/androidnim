@@ -37,8 +37,6 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     protected boolean pageOpen = false;
     protected GameLogic logic;
 
-    protected View iPageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +48,14 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
         boolean playWithAI = true; // Default to true
 
         if(extras != null){
-            if(extras.containsKey("score")) runningScore = extras.getInt("score");
+            //if(extras.containsKey("score")) runningScore = extras.getInt("score");
             if(extras.containsKey(WITH_AI)) playWithAI = extras.getBoolean(WITH_AI);
         }
-        else runningScore = 0;
+        //else runningScore = 0;
+
+        SharedPreferences save = getSharedPreferences("save", 0);
+
+        runningScore = Integer.parseInt(save.getString("points", "0"));
 
         logic = new GameLogic(this, findViewById(R.id.activity_single_player));
         logic.turnAiOn(playWithAI);

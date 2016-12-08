@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 public class stick //extends AppCompatActivity
 {
-    protected boolean visibility;
+    protected boolean visibility;//Remove
     protected boolean isSelected;
     protected int row;
     protected int position;
@@ -124,14 +124,12 @@ public class stick //extends AppCompatActivity
         String output = "";
         if(isRemoved) output = output + 1;
         else output = output + 0;
-        if(isSelected) output = output + 1;
-        else output = output + 0;
 
         return output;
     }
 
-    public void fromString(){
-
+    public void fromString(int input){
+        if(input == 1) remove();
     }
 
     public int getPosition() {

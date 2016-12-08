@@ -1,6 +1,7 @@
 package com.sndo9.robert.nim;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by sndo9 on 12/5/16.
@@ -42,6 +45,9 @@ public class GameLogic extends AppCompatActivity {
     private boolean useAI;
     private boolean isOver = false;
 
+    protected SharedPreferences save;
+    protected SharedPreferences.Editor editSave;
+
     public GameLogic(SinglePlayer c, View v) {
         count = ptsLeft = score = turns = 0;
         context = c;
@@ -57,6 +63,9 @@ public class GameLogic extends AppCompatActivity {
         cancel = (Button)view.findViewById(R.id.buttonCancel);
         infoTextField = (TextView) view.findViewById(R.id.helpText);
         infoTextField.setText("Player 1's turn");
+
+        save = context.getSharedPreferences("save", 0);
+        editSave = save.edit();
     }
 
     public void startGame(){
@@ -125,6 +134,8 @@ public class GameLogic extends AppCompatActivity {
             });
             arrayThree.add(newStick);
         }
+
+        if(useAI) resumeState();
 
         //Cancel and confirm touch listeners
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -266,6 +277,8 @@ public class GameLogic extends AppCompatActivity {
             }
         }
         disableButtons();
+        Log.w("saveState", "Near");
+        if(useAI && !isPlayerOne) saveState();
         checkWin();
     }
 
@@ -314,5 +327,50 @@ public class GameLogic extends AppCompatActivity {
 
     public void itsOverGoHome() {
         isOver = true;
+    }
+
+    public void saveState(){
+        Log.w("saveState", "Reached");
+        String rowString = "";
+        for(int i = 0; i < arrayOne.size(); i++){
+            rowString = rowString + arrayOne.get(i).toString();
+        }
+        editSave.putString("rowOneSave", rowString);
+        rowString = "";
+        for(int i = 0; i < arrayTwo.size(); i++){
+            rowString = rowString + arrayTwo.get(i).toString();
+        }
+        editSave.putString("rowTwoSave", rowString);
+        rowString = "";
+        for(int i = 0; i < arrayThree.size(); i++){
+            rowString = rowString + arrayThree.get(i).toString();
+        }
+        Log.w("-----------saving", rowString);
+        editSave.putString("rowThreeSave", rowString);
+        editSave.commit();
+
+        if(isOver){
+            editSave.remove("rowOneSave");
+            editSave.remove("rowTwoSave");
+            editSave.remove("rowThreeSave");
+            editSave.commit();
+        }
+    }
+
+    public void resumeState(){
+        Log.w("Resume", "In Resume");
+        String rowString = save.getString("rowOneSave", "000");
+        for(int i = 0; i < arrayOne.size(); i++){
+            arrayOne.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
+        }
+        rowString = save.getString("rowTwoSave", "00000");
+        for(int i = 0; i < arrayTwo.size(); i++){
+            arrayTwo.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
+        }
+        rowString = save.getString("rowThreeSave", "0000000");
+        for(int i = 0; i < arrayThree.size(); i++){
+            arrayThree.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
+        }
+        Log.w("-----------resuming", rowString);
     }
 }
