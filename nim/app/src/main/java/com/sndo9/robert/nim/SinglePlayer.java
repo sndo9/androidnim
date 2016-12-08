@@ -30,7 +30,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
     protected int score;
 
-    protected static int runningScore;
+    protected int runningScore;
 
     public static Button close;
 
@@ -90,7 +90,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
     }
 
-    public static void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
+    public void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
 
         int passingTurns = turns++ + 1;
 

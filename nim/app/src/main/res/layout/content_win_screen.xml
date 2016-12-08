@@ -16,13 +16,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/winScreenLayout"
+        android:visibility="visible">
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Enter your name"
+            android:hint="Enter your name"
             android:ems="10"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -76,7 +78,8 @@
             android:layout_alignBaseline="@+id/buttonPlayAgain"
             android:layout_alignBottom="@+id/buttonPlayAgain"
             android:layout_alignRight="@+id/TextView"
-            android:layout_alignEnd="@+id/TextView" />
+            android:layout_alignEnd="@+id/TextView"
+            android:visibility="visible"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -88,6 +91,116 @@
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/TextView"
             android:layout_alignStart="@+id/TextView" />
+
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/highscores"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Scores"
+            android:layout_gravity="center"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank8"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank9"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="XXXX"
+            android:id="@+id/rank10"/>
+
+    </LinearLayout>
+
+    <Button
+        android:text="Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonContinue"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>

@@ -12,7 +12,8 @@ import android.widget.ImageView;
  * Created by rober on 12/3/2016.
  */
 
-public class stick extends AppCompatActivity {
+public class stick //extends AppCompatActivity
+{
     protected boolean visibility;
     protected boolean isSelected;
     protected int row;
@@ -120,8 +121,17 @@ public class stick extends AppCompatActivity {
     }
 
     public String toString(){
+        String output = "";
+        if(isRemoved) output = output + 1;
+        else output = output + 0;
+        if(isSelected) output = output + 1;
+        else output = output + 0;
 
-        return null;
+        return output;
+    }
+
+    public void fromString(){
+
     }
 
     public int getPosition() {
@@ -131,4 +141,5 @@ public class stick extends AppCompatActivity {
     public int getRow() {
         return row;
     }
+
 }
