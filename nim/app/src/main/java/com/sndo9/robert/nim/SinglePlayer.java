@@ -65,6 +65,15 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
         information =(Button)findViewById(R.id.buttonInformation);
 
+        Button debug = (Button)findViewById(R.id.debug);
+
+        debug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                endGame(true, view.getContext(), 7, true);
+            }
+        });
+
 
 
         information.setOnClickListener(new View.OnClickListener() {
@@ -95,14 +104,16 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
     }
 
-    public void endGame(Boolean playerOne, int turns){
-        Intent goToWin = new Intent(this, WinScreen.class);
+    public static void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
+        Intent goToWin = new Intent(c, WinScreen.class);
+
         Bundle extra = new Bundle();
         extra.putInt("score", runningScore);
         extra.putBoolean("winner", playerOne);
         extra.putInt("numTurns", turns);
+        extra.putBoolean("AI", isAI);
         goToWin.putExtras(extra);
-        startActivity(goToWin);
+        c.startActivity(goToWin);
     }
 
     @Override
