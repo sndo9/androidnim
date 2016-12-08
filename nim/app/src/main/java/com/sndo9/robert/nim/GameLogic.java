@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
  */
 
 public class GameLogic extends AppCompatActivity {
+
 
     protected ArrayList<stick> arrayOne = new ArrayList<>();
     protected ArrayList<stick> arrayTwo = new ArrayList<>();
@@ -25,6 +27,7 @@ public class GameLogic extends AppCompatActivity {
 
     protected Button confirm;
     protected Button cancel;
+    protected TextView infoTextField;
 
     protected View view;
 
@@ -39,6 +42,7 @@ public class GameLogic extends AppCompatActivity {
     protected int ptsLeft;
     protected int score;
     protected int turns;
+    private boolean useAI;
 
     public GameLogic(SinglePlayer c, View v) {
         count = ptsLeft = score = turns = 0;
@@ -48,10 +52,13 @@ public class GameLogic extends AppCompatActivity {
 
         isPlayerOne = true;
         hasSelected = false;
+        useAI = true;
 
         //Find and hold buttons
         confirm = (Button)view.findViewById(R.id.buttonConfirm);
         cancel = (Button)view.findViewById(R.id.buttonCancel);
+        infoTextField = (TextView) view.findViewById(R.id.helpText);
+        infoTextField.setText("Player 1's turn");
     }
 
     public void startGame(){
@@ -129,21 +136,30 @@ public class GameLogic extends AppCompatActivity {
                 endTurn(arrayOne, arrayTwo, arrayThree);
                 isPlayerOne = !isPlayerOne;
 
-                if(computer.isPlayerOne == isPlayerOne) {
-                    /*Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
+                if(useAI) {
+                    if (computer.isPlayerOne == isPlayerOne) {
+                        infoTextField.setText("Computer's Turn");
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
 
-                        @Override
-                        public void run() {
+                            @Override
+                            public void run() {
 
-                        }
-                    }, 1000);*/
+                                int rowSelected = computer.doTurn(arrayOne, arrayTwo, arrayThree);
+                                endTurn(arrayOne, arrayTwo, arrayThree);
+                                isPlayerOne = !isPlayerOne;
+                                infoTextField.setText("Your turn");
+                            }
+                        }, 1000);
 
-                    int rowSelected = computer.doTurn(arrayOne, arrayTwo, arrayThree);
-                    endTurn(arrayOne, arrayTwo, arrayThree);
-                    isPlayerOne = !isPlayerOne;
+                    }
+                } else {
+                    if(isPlayerOne) {
+                        infoTextField.setText("Player 1's turn");
+                    } else {
+                        infoTextField.setText("Player 2's turn");
+                    }
                 }
-
             }
         });
 
@@ -285,5 +301,9 @@ public class GameLogic extends AppCompatActivity {
 
     public static void unPauseRow(ArrayList<stick> list){
         for(int i = 0; i < list.size(); i++) list.get(i).enable();
+    }
+
+    public void turnAiOn(boolean playWithAI) {
+        this.useAI = playWithAI;
     }
 }

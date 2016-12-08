@@ -24,10 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         singlePlayer = new Intent(this, SinglePlayer.class);
-        multiplayer = new Intent(this, Multiplayer.class);
+        singlePlayer.putExtra(SinglePlayer.WITH_AI, true);
+        multiplayer = new Intent(this, SinglePlayer.class);
+        multiplayer.putExtra(SinglePlayer.WITH_AI, false);
 
-        single = (Button)findViewById(R.id.button);
-        multi = (Button)findViewById(R.id.button2);
+        single = (Button)findViewById(R.id.singleplayer);
+        multi = (Button)findViewById(R.id.multiplayer);
 
         single.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -22,6 +22,7 @@ import static com.sndo9.robert.nim.R.id.instructionPage;
 
 public class SinglePlayer extends AppCompatActivity implements Instruction_Page.OnFragmentInteractionListener {
 
+    public static final String WITH_AI = "PLAY_WITH_THE_AI_ON";
     private static Button information;
 
     protected static FragmentManager f;
@@ -47,15 +48,19 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
         Intent call = getIntent();
 
         Bundle extras = call.getExtras();
+        boolean playWithAI = true; // Default to true
 
         if(extras != null){
             if(extras.containsKey("score")) runningScore = extras.getInt("score");
+            if(extras.containsKey(WITH_AI)) playWithAI = extras.getBoolean(WITH_AI);
         }
         else runningScore = 0;
 
+        logic = new GameLogic(this, findViewById(R.id.activity_single_player));
+        logic.turnAiOn(playWithAI);
+
         //if not saved
         highscore = new ArrayList<>();
-        logic = new GameLogic(this, findViewById(R.id.activity_single_player));
         f = getSupportFragmentManager();
 
         information =(Button)findViewById(R.id.buttonInformation);
