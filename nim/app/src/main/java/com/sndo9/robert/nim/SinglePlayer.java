@@ -28,8 +28,6 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     protected static FragmentManager f;
     protected static Instruction_Page iPage = new Instruction_Page();
 
-    protected static ArrayList<Tuple> highscore;
-
     protected int score;
 
     protected static int runningScore;
@@ -40,6 +38,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     protected GameLogic logic;
 
     protected View iPageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,21 +59,9 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
         logic.turnAiOn(playWithAI);
 
         //if not saved
-        highscore = new ArrayList<>();
         f = getSupportFragmentManager();
 
         information =(Button)findViewById(R.id.buttonInformation);
-
-        Button debug = (Button)findViewById(R.id.debug);
-
-        debug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                endGame(true, view.getContext(), 7, true);
-            }
-        });
-
-
 
         information.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,18 +86,23 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
             }
         });
 
-        //Loop start game to track pts
         logic.startGame();
 
     }
 
     public static void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
+
+        int passingTurns = turns++ + 1;
+
+        Log.w("-----------SinglePlayer", "Launching win screen");
+        Log.w("-----SinglePlayer.turns", "" + turns);
+        Log.w("-----SinglePlayer.score", "" + runningScore);
         Intent goToWin = new Intent(c, WinScreen.class);
 
         Bundle extra = new Bundle();
         extra.putInt("score", runningScore);
         extra.putBoolean("winner", playerOne);
-        extra.putInt("numTurns", turns);
+        extra.putInt("numTurns", passingTurns);
         extra.putBoolean("AI", isAI);
         goToWin.putExtras(extra);
         c.startActivity(goToWin);

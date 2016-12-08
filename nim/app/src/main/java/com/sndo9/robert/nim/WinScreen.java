@@ -29,47 +29,91 @@ public class WinScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win_screen);
 
-        int runningScore = 0;
-        Boolean isOne = false;
-        int turns = 0;
-        Boolean isAI = false;
+        int runningScore;
+        Boolean isOne;
+        int turns;
+        Boolean isAI;
 
         Button playAgain = (Button)findViewById(R.id.buttonPlayAgain);
-        Log.d("Processing", "Win");
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent single
+            }
+        });
 
         Intent call = getIntent();
 
         Bundle extras = call.getExtras();
 
+        Log.w("WinScreen", "Launched");
+
         if(extras != null){
-            if(extras.containsKey("winner") && extras.containsKey("score") && extras.containsKey("turns")){
+            if(extras.containsKey("winner") && extras.containsKey("score") && extras.containsKey("numTurns")){
                 runningScore = extras.getInt("score");
                 isOne = extras.getBoolean("winner");
-                turns = extras.getInt("turns");
+                turns = extras.getInt("numTurns");
                 isAI = extras.getBoolean("AI");
 
-                Log.d("Processing", "Bundle");
-                TextView winnerText = (TextView)findViewById(R.id.winnerText);
+                int potentialPoints;
 
-                //Player one won
-                if(isOne) winnerText.setText("Player One");
+                Log.w("--------WinScreen Turns", "" + turns);
+                Log.w("--------WinScreen score", "" + runningScore);
+
+                potentialPoints = (turns - 3);
+                Log.w("-------WinScreen.points", "" + potentialPoints);
+                potentialPoints = potentialPoints * 2;
+                Log.w("-------WinScreen.points", "" + potentialPoints);
+                potentialPoints = 10 - potentialPoints;
+
+                Log.w("-------WinScreen.points", "" + potentialPoints);
+
+                TextView winnerText = (TextView)findViewById(R.id.winnerText);
+                TextView scoreText = (TextView)findViewById(R.id.textViewScore);
+
+                //Player one won against player two
+                if(isOne && !isAI) {
+                    winnerText.setText("Player One");
+                    scoreText.setText("" + turns);
+                }
                 //AI won
-                else if(isAI && !isOne) winnerText.setText("Phill the AI");
+                else if(isAI && !isOne) {
+                    winnerText.setText("Phill the AI");
+                    scoreText.setText("" + runningScore);
+                    getHScore();
+                    Boolean isHScore = checkHScore(runningScore);
+                    if(isHScore) updateHScore();
+                    runningScore = 0;
+                }
                 //Player two won
-                else if(!isAI && !isOne) winnerText.setText("Player Two");
+                else if(!isAI && !isOne) {
+                    winnerText.setText("Player Two");
+                    scoreText.setText("" + turns);
+                }
                 //Player one won and is playing the AI
-                if(isOne && isAI) runningScore = runningScore + 1;
-                //Player one lost and is playing the AI
-                if(!isOne && isAI) getHScore();
+                if(isOne && isAI) {
+                    runningScore = runningScore + potentialPoints;
+                    winnerText.setText("The Player");
+                    scoreText.setText("" + runningScore);
+                }
+
+                final int passingScore = runningScore;
+
+                playAgain.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent playAgainIntent = new Intent(view.getContext(), SinglePlayer.class);
+                        playAgainIntent.putExtra("score", passingScore);
+                        startActivity(playAgainIntent);
+                    }
+                });
+
             }
         }
     }
 
-        //Check high scores
-
     public void getHScore(){
         //get and parse scores
-
         int i = 0;
 
         String scores;
@@ -100,6 +144,14 @@ public class WinScreen extends AppCompatActivity {
             i++;
         }
 
+
+    }
+
+    public boolean checkHScore(int points){
+        return false;
+    }
+
+    public void updateHScore(){
 
     }
 

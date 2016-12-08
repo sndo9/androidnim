@@ -3,6 +3,7 @@ package com.sndo9.robert.nim;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +24,6 @@ public class GameLogic extends AppCompatActivity {
 
     protected AI computer;
 
-    protected WinScreenFragment wPage = new WinScreenFragment();
-
     protected Button confirm;
     protected Button cancel;
     protected TextView infoTextField;
@@ -32,8 +31,6 @@ public class GameLogic extends AppCompatActivity {
     protected View view;
 
     protected SinglePlayer context;
-
-    protected Intent winScreen;
 
     protected boolean isPlayerOne;
     protected boolean hasSelected;
@@ -43,6 +40,7 @@ public class GameLogic extends AppCompatActivity {
     protected int score;
     protected int turns;
     private boolean useAI;
+    private boolean isOver = false;
 
     public GameLogic(SinglePlayer c, View v) {
         count = ptsLeft = score = turns = 0;
@@ -149,6 +147,8 @@ public class GameLogic extends AppCompatActivity {
                                 endTurn(arrayOne, arrayTwo, arrayThree);
                                 isPlayerOne = !isPlayerOne;
                                 infoTextField.setText("Your turn");
+                                turns++;
+                                Log.w("GameLogic.turns", "" + turns);
                             }
                         }, 1000);
 
@@ -156,6 +156,8 @@ public class GameLogic extends AppCompatActivity {
                 } else {
                     if(isPlayerOne) {
                         infoTextField.setText("Player 1's turn");
+                        turns++;
+                        Log.w("GameLogic.turns", "" + turns);
                     } else {
                         infoTextField.setText("Player 2's turn");
                     }
@@ -269,7 +271,10 @@ public class GameLogic extends AppCompatActivity {
 
     public void checkWin(){
         if(checkAllSticksRemoved(arrayOne, arrayTwo, arrayThree)) {
-            context.endGame(isPlayerOne, context, turns, true);
+            if(!isOver) {
+                itsOverGoHome();
+                context.endGame(isPlayerOne, context, turns, useAI);
+            }
         }
     }
 
@@ -305,5 +310,9 @@ public class GameLogic extends AppCompatActivity {
 
     public void turnAiOn(boolean playWithAI) {
         this.useAI = playWithAI;
+    }
+
+    public void itsOverGoHome() {
+        isOver = true;
     }
 }
