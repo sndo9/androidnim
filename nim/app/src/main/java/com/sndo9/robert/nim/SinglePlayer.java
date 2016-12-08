@@ -99,20 +99,16 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
     }
 
-<<<<<<< HEAD
     public static void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
         Intent goToWin = new Intent(c, WinScreen.class);
-=======
-    public void endGame(Boolean playerOne, int turns){
-        Intent goToWin = new Intent(this, WinScreen.class);
->>>>>>> bff385fe8361986c5fd175998b9921f137f672a4
+
         Bundle extra = new Bundle();
         extra.putInt("score", runningScore);
         extra.putBoolean("winner", playerOne);
         extra.putInt("numTurns", turns);
         extra.putBoolean("AI", isAI);
         goToWin.putExtras(extra);
-        startActivity(goToWin);
+        c.startActivity(goToWin);
     }
 
     @Override

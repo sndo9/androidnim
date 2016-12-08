@@ -253,7 +253,7 @@ public class GameLogic extends AppCompatActivity {
 
     public void checkWin(){
         if(checkAllSticksRemoved(arrayOne, arrayTwo, arrayThree)) {
-            context.endGame(isPlayerOne, turns);
+            context.endGame(isPlayerOne, context, turns, true);
         }
     }
 
