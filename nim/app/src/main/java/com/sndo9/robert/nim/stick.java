@@ -98,6 +98,7 @@ public class stick extends AppCompatActivity {
     }
 
     public void remove(){
+        image.setOnClickListener(null);
         thisV.startAnimation(remove);
         image.setVisibility(View.GONE);
         isRemoved = true;
