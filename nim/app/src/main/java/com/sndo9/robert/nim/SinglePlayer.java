@@ -18,10 +18,6 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import static android.R.attr.fragment;
-import static com.sndo9.robert.nim.GameLogic.pause;
-import static com.sndo9.robert.nim.GameLogic.startGame;
-import static com.sndo9.robert.nim.GameLogic.unPause;
-import static com.sndo9.robert.nim.GameLogic.view;
 import static com.sndo9.robert.nim.R.id.instructionPage;
 
 public class SinglePlayer extends AppCompatActivity implements Instruction_Page.OnFragmentInteractionListener {
@@ -40,6 +36,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
     public static Button close;
 
     protected boolean pageOpen = false;
+    protected GameLogic logic;
 
     protected View iPageView;
     @Override
@@ -58,7 +55,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
 
         //if not saved
         highscore = new ArrayList<>();
-
+        logic = new GameLogic(this, findViewById(R.id.activity_single_player));
         f = getSupportFragmentManager();
 
         information =(Button)findViewById(R.id.buttonInformation);
@@ -79,7 +76,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
             public void onClick(View view) {
                 if(!pageOpen) {
                     pageOpen = true;
-                    pause();
+                    logic.pause();
                     FragmentTransaction fT = f.beginTransaction();
                     fT.add(R.id.container, iPage, "hi");
 
@@ -87,7 +84,7 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
                 }
                 else{
                     pageOpen = false;
-                    unPause();
+                    logic.unPause();
                     FragmentManager f = getSupportFragmentManager();
                     FragmentTransaction fT = f.beginTransaction();
                     fT.remove(iPage);
@@ -97,26 +94,25 @@ public class SinglePlayer extends AppCompatActivity implements Instruction_Page.
             }
         });
 
-
-
-        View v = findViewById(R.id.activity_single_player);
-
         //Loop start game to track pts
-        startGame(this, v);
-
-        //Record high score
+        logic.startGame();
 
     }
 
+<<<<<<< HEAD
     public static void endGame(Boolean playerOne, Context c, int turns, Boolean isAI){
         Intent goToWin = new Intent(c, WinScreen.class);
+=======
+    public void endGame(Boolean playerOne, int turns){
+        Intent goToWin = new Intent(this, WinScreen.class);
+>>>>>>> bff385fe8361986c5fd175998b9921f137f672a4
         Bundle extra = new Bundle();
         extra.putInt("score", runningScore);
         extra.putBoolean("winner", playerOne);
         extra.putInt("numTurns", turns);
         extra.putBoolean("AI", isAI);
         goToWin.putExtras(extra);
-        c.startActivity(goToWin);
+        startActivity(goToWin);
     }
 
     @Override

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import static com.sndo9.robert.nim.GameLogic.view;
 
 
 /**
