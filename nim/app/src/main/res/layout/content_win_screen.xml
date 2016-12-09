@@ -33,8 +33,9 @@
             android:visibility="invisible"
             android:textAlignment="center" />
 
-        <Button
-            android:text="Submit"
+        <ImageButton
+            android:src="@drawable/enterkey"
+            android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -70,8 +71,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="24dp" />
 
-        <Button
-            android:text="Main Menu"
+        <ImageButton
+            android:src="@drawable/mainmenu"
+            android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonMainMenu"
@@ -81,10 +83,11 @@
             android:layout_alignEnd="@+id/TextView"
             android:visibility="visible"/>
 
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Again"
+            android:src="@drawable/replay"
+            android:background="@null"
             android:layout_marginBottom="24dp"
             android:id="@+id/buttonPlayAgain"
             android:visibility="visible"
@@ -193,8 +196,9 @@
 
     </LinearLayout>
 
-    <Button
-        android:text="Continue"
+    <ImageButton
+        android:src="@drawable/arrow"
+        android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonContinue"

@@ -36,8 +36,8 @@ public class GameLogic extends AppCompatActivity {
 
     protected AI computer;
 
-    protected Button confirm;
-    protected Button cancel;
+    protected ImageButton confirm;
+    protected ImageButton cancel;
     protected ImageButton icons;
     protected TextView infoTextField;
     protected TextView numOfTurns;
@@ -50,7 +50,6 @@ public class GameLogic extends AppCompatActivity {
     protected boolean hasSelected;
 
     protected ImageView newIcon;
-    protected ImageView newIcon2;
 
     protected int count;
     protected int ptsLeft;
@@ -80,6 +79,9 @@ public class GameLogic extends AppCompatActivity {
                 changeIcon(newIcon.getDrawable());
                 context.findViewById(R.id.gameLayout).setVisibility(View.VISIBLE);
                 context.findViewById(R.id.iconDrawer).setVisibility(View.GONE);
+                context.findViewById(R.id.buttonChangIcon).setVisibility(View.VISIBLE);
+                context.findViewById(R.id.buttonInformation).setVisibility(View.VISIBLE);
+                context.findViewById(R.id.textNumOfTurns).setVisibility(View.VISIBLE);
             }
         };
 
@@ -89,14 +91,17 @@ public class GameLogic extends AppCompatActivity {
         for(int i = 0; i < 8; i++) view.findViewById(context.getResources().getIdentifier(word + i, "id", context.getPackageName())).setOnClickListener(getClickDrawable);
 
         //Find and hold buttons
-        confirm = (Button)view.findViewById(R.id.buttonConfirm);
-        cancel = (Button)view.findViewById(R.id.buttonCancel);
+        confirm = (ImageButton)view.findViewById(R.id.buttonConfirm);
+        cancel = (ImageButton)view.findViewById(R.id.buttonCancel);
         icons = (ImageButton)view.findViewById(R.id.buttonChangIcon);
         icons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 context.findViewById(R.id.gameLayout).setVisibility(View.GONE);
                 context.findViewById(R.id.iconDrawer).setVisibility(View.VISIBLE);
+                context.findViewById(R.id.buttonChangIcon).setVisibility(View.GONE);
+                context.findViewById(R.id.buttonInformation).setVisibility(View.GONE);
+                context.findViewById(R.id.textNumOfTurns).setVisibility(View.GONE);
             }
         });
         infoTextField = (TextView) view.findViewById(R.id.helpText);
@@ -285,12 +290,16 @@ public class GameLogic extends AppCompatActivity {
 
     public void disableButtons(){
         confirm.setEnabled(false);
+        confirm.setImageDrawable(context.getDrawable(R.drawable.circlethin));
         cancel.setEnabled(false);
+        cancel.setImageDrawable(context.getDrawable(R.drawable.circlethinblack));
     }
 
     public void enableButtons(){
         confirm.setEnabled(true);
+        confirm.setImageDrawable(context.getDrawable(R.drawable.checkedblue));
         cancel.setEnabled(true);
+        cancel.setImageDrawable(context.getDrawable(R.drawable.cancel));
     }
 
     public  void resetSelect(){
@@ -404,15 +413,18 @@ public class GameLogic extends AppCompatActivity {
     }
 
     public void resumeState(){
-        Log.w("Resume", "In Resume");
+        //Fixes close on win screen
+        if(save.getString("rowOneSave", "000").equals("111") && save.getString("rowTwoSave", "00000").equals("11111") && save.getString("rowThreeSave", "1111111").equals("1111111")) return;
         String rowString = save.getString("rowOneSave", "000");
         for(int i = 0; i < arrayOne.size(); i++){
             arrayOne.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
         }
+        Log.w("-----------resuming", rowString);
         rowString = save.getString("rowTwoSave", "00000");
         for(int i = 0; i < arrayTwo.size(); i++){
             arrayTwo.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));
         }
+        Log.w("-----------resuming", rowString);
         rowString = save.getString("rowThreeSave", "0000000");
         for(int i = 0; i < arrayThree.size(); i++){
             arrayThree.get(i).fromString(Character.getNumericValue(rowString.charAt(i)));

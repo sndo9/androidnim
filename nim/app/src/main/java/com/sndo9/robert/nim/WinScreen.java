@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,8 +36,8 @@ public class WinScreen extends AppCompatActivity {
         int turns;
         final Boolean isAI;
 
-        Button playAgain = (Button)findViewById(R.id.buttonPlayAgain);
-        final Button mainMenu = (Button)findViewById(R.id.buttonMainMenu);
+        ImageButton playAgain = (ImageButton)findViewById(R.id.buttonPlayAgain);
+        final ImageButton mainMenu = (ImageButton)findViewById(R.id.buttonMainMenu);
 
         SharedPreferences save = getSharedPreferences("save", 0);
         SharedPreferences.Editor editSave = save.edit();
@@ -181,7 +182,7 @@ public class WinScreen extends AppCompatActivity {
         final EditText initals = (EditText)findViewById(R.id.enterName);
         initals.setVisibility(View.VISIBLE);
 
-        Button submitName = (Button)findViewById(R.id.buttonSubmitName);
+        ImageButton submitName = (ImageButton)findViewById(R.id.buttonSubmitName);
         submitName.setVisibility(View.VISIBLE);
         //Need to check for more then three characters
         submitName.setOnClickListener(new View.OnClickListener() {
@@ -240,7 +241,7 @@ public class WinScreen extends AppCompatActivity {
         LinearLayout layoutTwo = (LinearLayout)findViewById(R.id.highscores);
         layoutTwo.setVisibility(View.VISIBLE);
 
-        Button cont = (Button)findViewById(R.id.buttonContinue);
+        ImageButton cont = (ImageButton) findViewById(R.id.buttonContinue);
         cont.setVisibility(View.VISIBLE);
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
