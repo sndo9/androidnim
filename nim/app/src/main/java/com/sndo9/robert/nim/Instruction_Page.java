@@ -13,12 +13,7 @@ import android.widget.Button;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Instruction_Page.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Instruction_Page#newInstance} factory method to
- * create an instance of this fragment.
+ * A fragment for displaying the instruction page
  */
 public class Instruction_Page extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -29,7 +24,9 @@ public class Instruction_Page extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    /**
+     * Variable view to store the root view of the activity
+     */
     private View root;
 
     private OnFragmentInteractionListener mListener;
@@ -73,9 +70,6 @@ public class Instruction_Page extends Fragment {
         // Inflate the layout for this fragment
 
         root = inflater.inflate(R.layout.fragment_instruction__page, container, false);
-
-//        SinglePlayer.close = (Button) root.findViewById(R.id.buttonClose);
-//        SinglePlayer.setClose();
 
         return root;
     }

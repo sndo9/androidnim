@@ -24,6 +24,7 @@ public class WinScreen extends AppCompatActivity {
     protected String ini;
     protected int index;
     protected SharedPreferences highscores;
+    protected SharedPreferences.Editor scoreEditor;
     protected int j = 0;
 
     @Override
@@ -138,10 +139,11 @@ public class WinScreen extends AppCompatActivity {
         String scores;
         String initals;
 
-        String defaultScore = "0010*0009*0008*0007*0006*0005*0004*0003*0002*00001";
-        String defaultInitials = "JTK*JLP*CKJ*CJA*CBS*SCT*WEC*WCV*REG*DWP";
+        String defaultScore = "0000*0000*0000*0000*0000*0000*0000*0000*0000*00000";
+        String defaultInitials = "XXX*XXX*XXX*XXX*XXX*XXX*XXX*XXX*XXX*XXX";
 
         highscores = getSharedPreferences("highscore", 0);
+
 
         scores = highscores.getString("scores", defaultScore);
         initals = highscores.getString("initials", defaultInitials);
@@ -210,6 +212,7 @@ public class WinScreen extends AppCompatActivity {
 
                 saveHScores();
                 showHScores();
+                saveHighScores();
             }
         });
     }
@@ -223,8 +226,7 @@ public class WinScreen extends AppCompatActivity {
             sBI.append("*");
             sBS.append("*");
         }
-        highscores.edit().putString("scores", sBI.toString());
-        highscores.edit().putString("initials", sBS.toString());
+
     }
 
     public void showHScores(){
@@ -259,6 +261,23 @@ public class WinScreen extends AppCompatActivity {
             person.setText("" + hScores[i] + ": " + hInitals[i]);
             j++;
         }
+    }
+
+    public void saveHighScores(){
+        String storeScores = "";
+        String storeInitals = "";
+
+        scoreEditor = highscores.edit();
+
+        for(int i = 0; i < 10; i++){
+            storeScores = storeScores + "*" + hScores[i];
+            storeInitals = storeInitals + "*" + hInitals[i];
+        }
+
+        scoreEditor.putString("scores", storeScores);
+        scoreEditor.putString("initials", storeInitals);
+        scoreEditor.commit();
+
     }
 
 }
