@@ -93,7 +93,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick13"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -103,7 +103,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick14"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -113,7 +113,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick15"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -141,7 +141,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick22"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -150,7 +150,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick23"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -159,7 +159,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick24"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -168,7 +168,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick25"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -177,7 +177,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick26"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -192,7 +192,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick31"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -201,7 +201,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick32"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -210,7 +210,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick33"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -219,7 +219,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick34"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -228,7 +228,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick35"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -237,7 +237,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick36"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"
@@ -246,7 +246,7 @@
 
         <ImageView
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog"
+            app:srcCompat="@drawable/candle"
             android:id="@+id/stick37"
             android:layout_columnWeight="0.10"
             android:layout_rowWeight="0.10"

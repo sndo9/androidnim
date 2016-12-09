@@ -2,6 +2,7 @@ package com.sndo9.robert.nim;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;

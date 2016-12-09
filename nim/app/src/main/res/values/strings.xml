@@ -15,4 +15,5 @@
     <string name="multiplayer_text">Against Other Person</string>
     <string name="singleplayer_text">Against AI</string>
     <string name="nim">Nim</string>
+    <string name="object">"@android:drawable/btn_dialog"</string>
 </resources>
