@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,9 +17,11 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static android.R.id.content;
 import static android.R.id.edit;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static com.sndo9.robert.nim.SinglePlayer.f;
 
 /**
  * Created by sndo9 on 12/5/16.
@@ -34,6 +38,7 @@ public class GameLogic extends AppCompatActivity {
 
     protected Button confirm;
     protected Button cancel;
+    protected ImageButton icons;
     protected TextView infoTextField;
     protected TextView numOfTurns;
 
@@ -43,6 +48,9 @@ public class GameLogic extends AppCompatActivity {
 
     protected boolean isPlayerOne;
     protected boolean hasSelected;
+
+    protected ImageView newIcon;
+    protected ImageView newIcon2;
 
     protected int count;
     protected int ptsLeft;
@@ -64,9 +72,33 @@ public class GameLogic extends AppCompatActivity {
         hasSelected = false;
         useAI = true;
 
+        //Icon drawer listener
+        View.OnClickListener getClickDrawable = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newIcon = (ImageView)view;
+                changeIcon(newIcon.getDrawable());
+                context.findViewById(R.id.gameLayout).setVisibility(View.VISIBLE);
+                context.findViewById(R.id.iconDrawer).setVisibility(View.GONE);
+            }
+        };
+
+        //Icon Drawer
+        String word = "icon";
+        //Favorite line of code in this project
+        for(int i = 0; i < 8; i++) view.findViewById(context.getResources().getIdentifier(word + i, "id", context.getPackageName())).setOnClickListener(getClickDrawable);
+
         //Find and hold buttons
         confirm = (Button)view.findViewById(R.id.buttonConfirm);
         cancel = (Button)view.findViewById(R.id.buttonCancel);
+        icons = (ImageButton)view.findViewById(R.id.buttonChangIcon);
+        icons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.findViewById(R.id.gameLayout).setVisibility(View.GONE);
+                context.findViewById(R.id.iconDrawer).setVisibility(View.VISIBLE);
+            }
+        });
         infoTextField = (TextView) view.findViewById(R.id.helpText);
         infoTextField.setText("Player 1's turn");
         numOfTurns = (TextView)view.findViewById(R.id.textNumOfTurns);
@@ -388,5 +420,17 @@ public class GameLogic extends AppCompatActivity {
         Log.w("-----------resuming", rowString);
 
         turns = Integer.parseInt(save.getString("numTurns", "1"));
+    }
+
+    public void changeIcon(Drawable newPic){
+        for(int i = 0; i < arrayOne.size(); i++){
+            arrayOne.get(i).changeImage(newPic);
+        }
+        for(int i = 0; i < arrayTwo.size(); i++){
+            arrayTwo.get(i).changeImage(newPic);
+        }
+        for(int i = 0; i < arrayThree.size(); i++){
+            arrayThree.get(i).changeImage(newPic);
+        }
     }
 }

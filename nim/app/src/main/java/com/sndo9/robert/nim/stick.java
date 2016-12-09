@@ -1,6 +1,7 @@
 package com.sndo9.robert.nim;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -138,6 +139,10 @@ public class stick //extends AppCompatActivity
 
     public int getRow() {
         return row;
+    }
+
+    public void changeImage(Drawable pic){
+        image.setImageDrawable(pic);
     }
 
 }
